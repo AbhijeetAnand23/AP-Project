@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class TankStars extends Game {
-	SpriteBatch batch;
+	public SpriteBatch batch;
 	BitmapFont font;
 
 	@Override

@@ -3,7 +3,6 @@ package com.mygame.taskstars;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -28,7 +27,7 @@ public class LoadingScreen implements Screen {
 
         background = new Texture("Background.png");
         loading = new Texture("Loading.png");
-        Entry_Song = Gdx.audio.newMusic(Gdx.files.internal("Loading_Screen_Music.mp3"));
+        Entry_Song = Gdx.audio.newMusic(Gdx.files.internal("loadingScreenMusic.mp3"));
         box = new Rectangle(600, 20,700, 70);
         Entry_Song.setLooping(true);
         Entry_Song.play();

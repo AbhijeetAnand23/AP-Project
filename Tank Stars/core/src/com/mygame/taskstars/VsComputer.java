@@ -10,12 +10,14 @@ public class VsComputer implements Screen {
     SpriteBatch batch;
     Texture background;
     Texture terrain;
+    Texture health;
     public VsComputer(TankStars game){
         this.game = game;
         batch = new SpriteBatch();
 
         background = new Texture("VsComputerTerrain.png");
         terrain = new Texture("Terrain.png");
+        health = new Texture("Health.png");
     }
     @Override
     public void show() {
@@ -27,7 +29,8 @@ public class VsComputer implements Screen {
         ScreenUtils.clear(1, 1, 1, 1);
         game.batch.begin();
         game.batch.draw(background, 0,0,1900, 915);
-        game.batch.draw(terrain,0,0,1920,1080);
+        game.batch.draw(terrain,0,-100,1920,1080);
+        game.batch.draw(health, -400,720,2798, 256);
         game.batch.end();
     }
 
@@ -55,5 +58,6 @@ public class VsComputer implements Screen {
     public void dispose() {
         background.dispose();
         terrain.dispose();
+        health.dispose();
     }
 }
