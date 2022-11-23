@@ -26,7 +26,7 @@ public class VsComputer implements Screen {
         shapeRenderer = new ShapeRenderer();
 
         background = new Texture("VsComputerTerrain.png");
-        terrain = new Texture("Terrain.png");
+        terrain = new Texture("terr_final.png");
         health = new Texture("Health.png");
         menuIcon = new Texture("MenuIcon.png");
         menuBox = new Rectangle(63,820,60,70);
