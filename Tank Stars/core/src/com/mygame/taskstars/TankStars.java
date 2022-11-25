@@ -1,18 +1,15 @@
 package com.mygame.taskstars;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class TankStars extends Game {
 	public SpriteBatch batch;
-	BitmapFont font;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		font = new BitmapFont();
-		this.setScreen(new LoadingScreen(this));
+		this.setScreen(new ChoseTanksPlayer1(this));
 	}
 
 
@@ -24,6 +21,5 @@ public class TankStars extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		font.dispose();
 	}
 }

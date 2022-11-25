@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -25,7 +24,6 @@ public class MainMenu implements Screen {
     Texture setting;
     Rectangle settingBox;
     Vector3 settingTouch;
-    ShapeRenderer shapeRenderer;
     TextButton newGame;
     TextButton loadGame;
     TextButton exit;
@@ -34,39 +32,41 @@ public class MainMenu implements Screen {
     BitmapFont font;
     Stage stage;
     Table table;
+
     public MainMenu(TankStars game) {
         this.game = game;
         batch = new SpriteBatch();
         font = new BitmapFont();
         font.setColor(Color.BLACK);
-        shapeRenderer = new ShapeRenderer();
+        stage = new Stage();
+        table = new Table(skin);
+        TextButton.TextButtonStyle buttonText = new TextButton.TextButtonStyle();
+        Gdx.input.setInputProcessor(stage);
+
+
         background = new Texture("MainMenu.png");
-        tank = new Texture("MainMenuTank.png");
+        tank = new Texture("Tank1MainMenu.png");
         setting = new Texture("SettingIcon.png");
         atlas = new TextureAtlas("button.atlas");
         skin = new Skin(atlas);
-        stage = new Stage();
-        Gdx.input.setInputProcessor(stage);
-        table = new Table(skin);
-        TextButton.TextButtonStyle buttonText = new TextButton.TextButtonStyle();
         buttonText.up = skin.getDrawable("button_up");
         buttonText.down = skin.getDrawable("button_down");
         buttonText.pressedOffsetX = 1;
         buttonText.pressedOffsetY = -1;
         buttonText.font = font;
-//        button.font = black;
         newGame = new TextButton("NEW GAME",buttonText);
         loadGame = new TextButton("LOAD GAME", buttonText);
         exit = new TextButton("EXIT", buttonText);
-        loadGame.setPosition(1900/2+400,915/2-80);
+        loadGame.setPosition(1350,377);
         loadGame.setSize(350,120);
         loadGame.getLabel().setFontScale(3,3);
-        newGame.setPosition(1900/2+400,915/2+80);
+        newGame.setPosition(1350,537);
         newGame.setSize(350,120);
         newGame.getLabel().setFontScale(3,3);
-        exit.setPosition(1900/2+400,915/2-240);
+        exit.setPosition(1350,217);
         exit.setSize(350,120);
         exit.getLabel().setFontScale(3,3);
+
         stage.addActor(newGame);
         stage.addActor(loadGame);
         stage.addActor(exit);
@@ -86,16 +86,17 @@ public class MainMenu implements Screen {
         game.batch.draw(tank, 325, 80, 600, 600);
         game.batch.draw(setting, 70,830,46,46);
         game.batch.end();
+
         newGame.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event , float x , float y){
-                game.setScreen(new VsComputer(game));
+                game.setScreen(new ChoseTanksPlayer1(game));
             }
         });
         loadGame.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event , float x , float y){
-                game.setScreen(new VsFriend(game));
+                game.setScreen(new SavedGame(game));
             }
         });
         exit.addListener(new ClickListener(){

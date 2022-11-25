@@ -4,9 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
-import com.mygame.taskstars.TankStars;
 
 import java.awt.*;
 
@@ -20,12 +18,10 @@ public class InGameMenu implements Screen {
     Vector3 resumeTouch;
     Rectangle mainMenuBox;
     Vector3 mainMenuTouch;
-    ShapeRenderer shapeRenderer;
 
     public InGameMenu(TankStars game) {
         this.game = game;
         batch = new SpriteBatch();
-        shapeRenderer = new ShapeRenderer();
 
         background = new Texture("InGameMenu.png");
         closeBox = new Rectangle(1240,700, 44,44);
@@ -47,7 +43,7 @@ public class InGameMenu implements Screen {
             closeTouch = new Vector3();
             closeTouch.set(Gdx.input.getX(), 915 - Gdx.input.getY(), 0);
             if(closeBox.contains(closeTouch.x, closeTouch.y)) {
-                game.setScreen(new VsFriend(game));
+                game.setScreen(new NewGame(game));
                 dispose();
             }
         }
@@ -56,7 +52,7 @@ public class InGameMenu implements Screen {
             resumeTouch = new Vector3();
             resumeTouch.set(Gdx.input.getX(), 915 - Gdx.input.getY(), 0);
             if(resumeBox.contains(resumeTouch.x, resumeBox.y)) {
-                game.setScreen(new VsFriend(game));
+                game.setScreen(new NewGame(game));
                 dispose();
             }
         }
@@ -69,12 +65,6 @@ public class InGameMenu implements Screen {
                 dispose();
             }
         }
-
-//        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
-//        shapeRenderer.rect(closeBox.x, closeBox.y, closeBox.width, closeBox.height);
-//        shapeRenderer.rect(resumeBox.x, resumeBox.y, resumeBox.width, resumeBox.height);
-//        shapeRenderer.rect(mainMenuBox.x, mainMenuBox.y, mainMenuBox.width, mainMenuBox.height);
-//        shapeRenderer.end();
     }
 
     @Override

@@ -25,8 +25,8 @@ public class LoadingScreen implements Screen {
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
-        background = new Texture("Background.png");
-        loading = new Texture("Loading.png");
+        background = new Texture("Loading.png");
+        loading = new Texture("LoadingBar.png");
         Entry_Song = Gdx.audio.newMusic(Gdx.files.internal("loadingScreenMusic.mp3"));
         box = new Rectangle(600, 20,700, 70);
         Entry_Song.setLooping(true);

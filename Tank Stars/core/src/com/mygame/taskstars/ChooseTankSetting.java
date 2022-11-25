@@ -8,14 +8,14 @@ import com.badlogic.gdx.math.Vector3;
 
 import java.awt.*;
 
-public class MainMenuSetting implements Screen {
+public class ChooseTankSetting implements Screen {
     TankStars game;
     SpriteBatch batch;
     Texture background;
     Rectangle close;
     Vector3 closeTouch;
 
-    public MainMenuSetting(TankStars game) {
+    public ChooseTankSetting(TankStars game) {
         this.game = game;
         batch = new SpriteBatch();
 
@@ -37,7 +37,7 @@ public class MainMenuSetting implements Screen {
             closeTouch = new Vector3();
             closeTouch.set(Gdx.input.getX(), 915 - Gdx.input.getY(), 0);
             if(close.contains(closeTouch.x, closeTouch.y)) {
-                game.setScreen(new MainMenu(game));
+                game.setScreen(new ChoseTanksPlayer2(game));
                 dispose();
             }
         }
