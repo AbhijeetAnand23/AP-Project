@@ -9,7 +9,7 @@ public class TankStars extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		this.setScreen(new LoadingScreen(this));
+		this.setScreen(new NewGame(this));
 	}
 
 
