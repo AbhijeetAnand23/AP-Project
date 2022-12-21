@@ -1,13 +1,13 @@
 package com.mygame.taskstars;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 public class Player extends Image {
-    Vector2 position, size;
+    Vector2 position;
+    Vector2 size;
     Texture player;
     Texture fuel_box;
     Texture fuel_bar;
@@ -21,7 +21,6 @@ public class Player extends Image {
     public Player(String file, Vector2 position, Vector2 size, String file1, String file2, String file3, String file4){
         fuel_box  = new Texture(file2);
         fuel_bar  = new Texture(file1);
-//        heart = new Texture(file5);
         health_bar = new Texture(file3);
         health_box = new Texture(file4);
         player = new Texture(file);
@@ -89,7 +88,12 @@ public class Player extends Image {
     public Vector2 getSize() {
         return size;
     }
-
+    public float getLength() {
+        return size.x;
+    }
+    public float getHeight() {
+        return size.y;
+    }
     public void setSize(Vector2 size) {
         this.size = size;
     }

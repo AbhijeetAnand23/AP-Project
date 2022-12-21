@@ -18,13 +18,13 @@ public class NewGame implements Screen {
     private Texture terrain;
     private Texture health;
     private Texture menuIcon;
-//    private Texture tank1;
-//    private Texture tank2;
     private Rectangle menuBox;
     private Vector3 menuTouch;
     private Player player1;
     private Player player2;
-    private int flag =0;
+    private Tank1 tank1;
+    private Tank2 tank2;
+    private int flag = 0;
 
     public NewGame(TankStars game){
         this.game = game;
@@ -34,11 +34,10 @@ public class NewGame implements Screen {
         terrain = new Texture("Terrain.png");
         health = new Texture("Health.png");
         menuIcon = new Texture("MenuIcon.png");
-//        tank1 = new Texture("Tank1.png");
         player1 = new Player("tank1.png",new Vector2(370, 340),new Vector2(170,170),"Fuel Bar.png", "Fuel_BG.png","Health_Bar.png", "Health_box.png");
+        tank1 = Tank1.getTank1();
         player2 = new Player("Tank2 Reversed.png", new Vector2(1475, 336),new Vector2(170,170),"Fuel Bar.png", "Fuel_BG.png","Health_Bar.png", "Health_box.png");
-
-//        tank2 = new Texture("Tank2 Reversed.png");
+        tank2 = Tank2.getTank2(new Vector2(1475, 336));
         menuBox = new Rectangle(63,820,60,70);
     }
     @Override
@@ -52,11 +51,8 @@ public class NewGame implements Screen {
         game.batch.begin();
         game.batch.draw(background, 0,0,1900, 915);
         game.batch.draw(terrain,0,-150,1920,1080);
-//        game.batch.draw(health, -400,720,2798, 256);
         game.batch.draw(menuIcon, 0,790,188, 138);
 
-//        game.batch.draw(tank1,370,340,170,170);
-//        game.batch.draw(tank2, 1475,336,170,170);
         if (Gdx.input.justTouched()) {
             menuTouch = new Vector3();
             menuTouch.set(Gdx.input.getX(), 915 - Gdx.input.getY(), 0);
